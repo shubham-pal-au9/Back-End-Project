@@ -1,1 +1,1 @@
-# Full Stack CRM Ticking System Project
+# Full Stack CRM Ticketing System Project
