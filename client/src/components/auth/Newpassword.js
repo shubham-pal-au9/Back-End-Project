@@ -97,6 +97,15 @@ const Newpassword = ({ newPassword, setAlert }) => {
                           minLength='6'
                         />
                       </div>
+
+                      <div className='form-group mt-4'>
+                        <button
+                          type='submit'
+                          className='btn btn-primary btn-lg'
+                        >
+                          Reset Password
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
