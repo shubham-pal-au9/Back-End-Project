@@ -4,8 +4,8 @@
   "description": "Ticketing application",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Rajat Bhatt and Shubham Pal",
   "license": "ISC",
