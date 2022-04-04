@@ -13,7 +13,7 @@ import { setAlert } from "./alert";
 //Get User
 export const getUsers = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/users/allusers");
+    const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/users/allusers");
 
     dispatch({
       type: GET_USERS,
@@ -44,7 +44,7 @@ export const editProfile = (userId, { name, avatar, password }) => async (
 
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/users/editprofile/${userId}`,
+      `https://mernapp-backendapp.herokuapp.com/api/users/editprofile/${userId}`,
       body,
       config
     );
@@ -72,7 +72,7 @@ export const deleteUser = (id) => async (dispatch) => {
   if (window.confirm("Are You sure? Once User Deleted can't be undone ")) {
 
   try {
-    await axios.delete(`http://localhost:5000/api/users/deleteUser/${id}`);
+    await axios.delete(`https://mernapp-backendapp.herokuapp.com/api/users/deleteUser/${id}`);
     
     dispatch({
       type: DELETE_USER,

@@ -14,7 +14,7 @@ import {
 
 export const getTickets = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/ticket/");
+    const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/ticket/");
 
     dispatch({
       type: GET_TICKETS,
@@ -48,7 +48,7 @@ export const createTicket = ({
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/ticket",
+      "https://mernapp-backendapp.herokuapp.com/api/ticket",
       body,
       config
     );
@@ -73,7 +73,7 @@ export const createTicket = ({
 // Get ticket by id
 export const getTicket = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`http://localhost:5000/api/ticket/${id}`);
+    const res = await axios.get(`https://mernapp-backendapp.herokuapp.com/api/ticket/${id}`);
     dispatch({
       type: GET_TICKET,
       payload: res.data,
@@ -99,7 +99,7 @@ export const addReply = (ticketId, formData) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `http://localhost:5000/api/ticket/conversation/${ticketId}`,
+      `https://mernapp-backendapp.herokuapp.com/api/ticket/conversation/${ticketId}`,
       formData,
       config
     );
@@ -130,7 +130,7 @@ export const updateStatus = (ticketId, status) => async (dispatch) => {
 
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/ticket/updateticket/${ticketId}`,
+      `https://mernapp-backendapp.herokuapp.com/api/ticket/updateticket/${ticketId}`,
       body,
       config
     );

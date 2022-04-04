@@ -22,7 +22,7 @@ export const loadUser = () => async (dispatch) => {
     setAuthToken(localStorage.token);
   }
   try {
-    const res = await axios.get("http://localhost:5000/api/auth");
+    const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/auth");
 
     dispatch({
       type: USER_LOADED,
@@ -49,7 +49,7 @@ export const createUser = ({ name, email, password, role }) => async (
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/users",
+      "https://mernapp-backendapp.herokuapp.com/api/users",
       body,
       config
     );
@@ -83,7 +83,7 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/auth",
+      "https://mernapp-backendapp.herokuapp.com/api/auth",
       body,
       config
     );
@@ -118,7 +118,7 @@ export const reset = (email) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      "http://localhost:5000/api/auth/reset-password",
+      "https://mernapp-backendapp.herokuapp.com/api/auth/reset-password",
       body,
       config
     );
@@ -153,7 +153,7 @@ export const newPassword = (password, token) => async (dispatch) => {
 
   try {
     const res = await axios.put(
-      "http://localhost:5000/api/auth/new-password",
+      "https://mernapp-backendapp.herokuapp.com/api/auth/new-password",
       body,
       config
     );
