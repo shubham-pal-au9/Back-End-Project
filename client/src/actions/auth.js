@@ -22,7 +22,10 @@ export const loadUser = () => async (dispatch) => {
     setAuthToken(localStorage.token);
   }
   try {
-    const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/auth");
+    //const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/auth");
+    const res = await axios.get(
+      "https://filthy-plum-shrug.cyclic.app/api/auth"
+    );
 
     dispatch({
       type: USER_LOADED,
@@ -36,40 +39,41 @@ export const loadUser = () => async (dispatch) => {
 };
 
 //create user
-export const createUser = ({ name, email, password, role }) => async (
-  dispatch
-) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const createUser =
+  ({ name, email, password, role }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  const body = JSON.stringify({ name, email, password, role });
+    const body = JSON.stringify({ name, email, password, role });
 
-  try {
-    const res = await axios.post(
-      "https://mernapp-backendapp.herokuapp.com/api/users",
-      body,
-      config
-    );
-    dispatch({
-      type: CREATE_USER_SUCCESS,
-      payload: res.data,
-    });
-    dispatch(setAlert("User Added Successfully", "success"));
-  } catch (err) {
-    const errors = err.response.data.errors;
+    try {
+      const res = await axios.post(
+        //"https://mernapp-backendapp.herokuapp.com/api/users",
+        "https://filthy-plum-shrug.cyclic.app/api/users",
+        body,
+        config
+      );
+      dispatch({
+        type: CREATE_USER_SUCCESS,
+        payload: res.data,
+      });
+      dispatch(setAlert("User Added Successfully", "success"));
+    } catch (err) {
+      const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+
+      dispatch({
+        type: CREATE_USER_FAIL,
+      });
     }
-
-    dispatch({
-      type: CREATE_USER_FAIL,
-    });
-  }
-};
+  };
 
 //login user
 export const login = (email, password) => async (dispatch) => {
@@ -83,7 +87,8 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      "https://mernapp-backendapp.herokuapp.com/api/auth",
+      //"https://mernapp-backendapp.herokuapp.com/api/auth",
+      "https://filthy-plum-shrug.cyclic.app/api/auth",
       body,
       config
     );
@@ -118,7 +123,8 @@ export const reset = (email) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      "https://mernapp-backendapp.herokuapp.com/api/auth/reset-password",
+      /* "https://mernapp-backendapp.herokuapp.com/api/auth/reset-password", */
+      "https://filthy-plum-shrug.cyclic.app/api/auth/reset-password",
       body,
       config
     );
@@ -153,7 +159,8 @@ export const newPassword = (password, token) => async (dispatch) => {
 
   try {
     const res = await axios.put(
-      "https://mernapp-backendapp.herokuapp.com/api/auth/new-password",
+      /* "https://mernapp-backendapp.herokuapp.com/api/auth/new-password", */
+      "https://filthy-plum-shrug.cyclic.app/api/auth/new-password",
       body,
       config
     );

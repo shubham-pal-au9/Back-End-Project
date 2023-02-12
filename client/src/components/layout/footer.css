@@ -2,9 +2,13 @@
     footer
     ----------------------*/
 footer.footer {
-  padding: 1rem 0.875rem;
-  direction: ltr;
-  background: #fff;
+    padding: 1rem 0.875rem;
+    direction: ltr;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
 }
 footer.footer ul {
   margin: 0px;

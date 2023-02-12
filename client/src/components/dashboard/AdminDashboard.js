@@ -51,100 +51,100 @@ const AdminDashboard = ({
   };
 
   return !isAuthenticated ? (
-    <Redirect to='/' />
+    <Redirect to="/" />
   ) : (
-    <div id='wrapper'>
-      <div className='overlay'></div>
+    <div id="wrapper">
+      <div className="overlay"></div>
 
-      <div id='page-content-wrapper'>
-        <div id='content'>
-          <div className='container-fluid p-0 px-lg-0 px-md-0'>
+      <div id="page-content-wrapper">
+        <div id="content">
+          <div className="container-fluid p-0 px-lg-0 px-md-0">
             <Navbar />
 
-            <div className='container-fluid px-lg-4'>
-              <div className='row'>
-                <div className='col-md-12 mt-lg-4 mt-4'>
-                  <div className='d-sm-flex align-items-center justify-content-between mb-4'>
-                    <h1 className='h3 mb-0 text-gray-800'>Dashboard</h1>
+            <div className="container-fluid px-lg-4">
+              <div className="row">
+                <div className="col-md-12 mt-lg-4 mt-4">
+                  <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
                   </div>
                 </div>
                 {/* vhjgjhd */}
                 <Alert />
                 <Profile user={user} />
-                <div className='col-md-12'>
-                  <div className='row'>
-                    <div className='col-sm-3'>
-                      <div className='card'>
-                        <div className='card-body'>
-                          <h5 className='card-title mb-4'>Client Count</h5>
-                          <h1 className='display-5 mt-1 mb-3'>
+                <div className="col-md-12">
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title mb-4">Client Count</h5>
+                          <h1 className="display-5 mt-1 mb-3">
                             {Object.keys(users).length}
                           </h1>
                         </div>
                       </div>
                     </div>
-                    <div className='col-sm-3'>
-                      <div className='card'>
-                        <div className='card-body'>
-                          <h5 className='card-title mb-4'>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title mb-4">
                             Total Tickets Count
                           </h5>
-                          <h1 className='display-5 mt-1 mb-3'>
+                          <h1 className="display-5 mt-1 mb-3">
                             {Object.keys(tickets).length}
                           </h1>
                         </div>
                       </div>
                     </div>
-                    <div className='col-sm-3'>
-                      <div className='card'>
-                        <div className='card-body'>
-                          <h5 className='card-title mb-4'>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title mb-4">
                             In Progress Tickets Count
                           </h5>
 
-                          <h1 className='display-5 mt-1 mb-3'>{numProgress}</h1>
+                          <h1 className="display-5 mt-1 mb-3">{numProgress}</h1>
                         </div>
                       </div>
                     </div>
-                    <div className='col-sm-3'>
-                      <div className='card'>
-                        <div className='card-body'>
-                          <h5 className='card-title mb-4'>New Tickets Count</h5>
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title mb-4">New Tickets Count</h5>
 
-                          <h1 className='display-5 mt-1 mb-3'>{numNew}</h1>
+                          <h1 className="display-5 mt-1 mb-3">{numNew}</h1>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className='col-md-12 mt-4'>
-                    <div className='card'>
-                      <div className='card-body'>
-                        <div className='d-md-flex align-items-center'>
+                  <div className="col-md-12 mt-4">
+                    <div className="card">
+                      <div className="card-body">
+                        <div className="d-md-flex align-items-center">
                           <div>
-                            <h4 className='card-title'>List Of Users</h4>
+                            <h4 className="card-title">List Of Users</h4>
                           </div>
                         </div>
                       </div>
-                      <div className='table-responsive'>
-                        <table className='table v-middle'>
+                      <div className="table-responsive">
+                        <table className="table v-middle">
                           <thead>
-                            <tr className='bg-light'>
-                              <th className='border-top-0'>Name</th>
-                              <th className='border-top-0'>Email</th>
-                              <th className='border-top-0'>Role</th>
-                              <th className='border-top-0'>
+                            <tr className="bg-light">
+                              <th className="border-top-0">Name</th>
+                              <th className="border-top-0">Email</th>
+                              <th className="border-top-0">Role</th>
+                              <th className="border-top-0">
                                 User Created Date
                               </th>
-                              <th className='border-top-0'>Action</th>
+                              <th className="border-top-0">Action</th>
                             </tr>
                           </thead>
                           <tbody>{displayUsers}</tbody>
                         </table>
                       </div>{" "}
                       <br />
-                      <div>
+                      <div className="reactpaginate">
                         <ReactPaginate
-                          className='d-flex align-items-center'
+                          className="d-flex align-items-center"
                           previousLabel={"Previous"}
                           nextLabel={"Next"}
                           pageCount={pageCount}

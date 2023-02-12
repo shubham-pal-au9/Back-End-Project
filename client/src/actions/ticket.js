@@ -14,7 +14,10 @@ import {
 
 export const getTickets = () => async (dispatch) => {
   try {
-    const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/ticket/");
+    //const res = await axios.get("https://mernapp-backendapp.herokuapp.com/api/ticket/");
+    const res = await axios.get(
+      "https://filthy-plum-shrug.cyclic.app/api/ticket/"
+    );
 
     dispatch({
       type: GET_TICKETS,
@@ -32,48 +35,49 @@ export const getTickets = () => async (dispatch) => {
 };
 
 //create ticket
-export const createTicket = ({
-  ticket_issue,
-  priority,
-  req_category,
-  desc,
-}) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const createTicket =
+  ({ ticket_issue, priority, req_category, desc }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  const body = JSON.stringify({ ticket_issue, priority, req_category, desc });
+    const body = JSON.stringify({ ticket_issue, priority, req_category, desc });
 
-  try {
-    const res = await axios.post(
-      "https://mernapp-backendapp.herokuapp.com/api/ticket",
-      body,
-      config
-    );
-    dispatch({
-      type: CREATE_TICKET_SUCCESS,
-      payload: res.data,
-    });
-    dispatch(setAlert("Ticket Created Successfully", "success"));
-  } catch (err) {
-    const errors = err.response.data.errors;
+    try {
+      const res = await axios.post(
+        //"https://mernapp-backendapp.herokuapp.com/api/ticket",
+        "https://filthy-plum-shrug.cyclic.app/api/ticket/",
+        body,
+        config
+      );
+      dispatch({
+        type: CREATE_TICKET_SUCCESS,
+        payload: res.data,
+      });
+      dispatch(setAlert("Ticket Created Successfully", "success"));
+    } catch (err) {
+      const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      }
+
+      dispatch({
+        type: CREATE_TICKET_FAIL,
+      });
     }
-
-    dispatch({
-      type: CREATE_TICKET_FAIL,
-    });
-  }
-};
+  };
 
 // Get ticket by id
 export const getTicket = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`https://mernapp-backendapp.herokuapp.com/api/ticket/${id}`);
+    const res = await axios.get(
+      //`https://mernapp-backendapp.herokuapp.com/api/ticket/${id}`
+      `https://filthy-plum-shrug.cyclic.app/api/ticket/${id}`
+    );
     dispatch({
       type: GET_TICKET,
       payload: res.data,
@@ -99,7 +103,8 @@ export const addReply = (ticketId, formData) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `https://mernapp-backendapp.herokuapp.com/api/ticket/conversation/${ticketId}`,
+      //`https://mernapp-backendapp.herokuapp.com/api/ticket/conversation/${ticketId}`,
+      `https://filthy-plum-shrug.cyclic.app/api/ticket/conversation/${ticketId}`,
       formData,
       config
     );
@@ -130,7 +135,8 @@ export const updateStatus = (ticketId, status) => async (dispatch) => {
 
   try {
     const res = await axios.put(
-      `https://mernapp-backendapp.herokuapp.com/api/ticket/updateticket/${ticketId}`,
+      //`https://mernapp-backendapp.herokuapp.com/api/ticket/updateticket/${ticketId}`,
+      `https://filthy-plum-shrug.cyclic.app/api/ticket/updateticket/${ticketId}`,
       body,
       config
     );

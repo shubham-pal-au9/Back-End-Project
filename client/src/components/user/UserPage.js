@@ -56,84 +56,83 @@ const UserPage = ({ getUsers, user: { users, loading } }) => {
       <Footer />
     </Fragment>
   ) : (
-    <div id='wrapper'>
-      <div className='overlay'></div>
+    <div id="wrapper">
+      <div className="overlay"></div>
 
-      <div id='page-content-wrapper'>
-        <div id='content'>
-          <div className='container-fluid p-0 px-lg-0 px-md-0'>
+      <div id="page-content-wrapper">
+        <div id="content">
+          <div className="container-fluid p-0 px-lg-0 px-md-0">
             {/* Navbar */}
             <Navbar />
 
-            <div className='container-fluid px-lg-4'>
-              <div className='row'>
-                <div className='col-md-12 mt-lg-4 mt-4'>
-                  <div className='d-sm-flex align-items-center justify-content-between mb-4'>
-                    <h1 className='h3 mb-0 text-gray-800'>Users</h1>
+            <div className="container-fluid px-lg-4">
+              <div className="row">
+                <div className="col-md-12 mt-lg-4 mt-4">
+                  <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 className="h3 mb-0 text-gray-800">Users</h1>
                     <Link
-                      to='/create-user'
-                      className='d-sm-inline-block btn btn-sm btn-primary shadow-sm'
+                      to="/create-user"
+                      className="d-sm-inline-block btn btn-sm btn-primary shadow-sm"
                     >
-                      <i className='fas fa-plus'></i>
+                      <i className="fas fa-plus"></i>
                       Add New User
                     </Link>
                   </div>
                 </div>
                 {/* vhjgjhd */}
                 <Alert />
-                <div className='col-md-12'>
-                  <div className='row'>
-                    <div className='col-sm-3'>
-                      <div className='card'>
-                        <div className='card-body'>
-                          <h5 className='card-title mb-4'>User Count</h5>
-                          <h1 className='display-5 mt-1 mb-3'>
+                <div className="col-md-12">
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title mb-4">User Count</h5>
+                          <h1 className="display-5 mt-1 mb-3">
                             {Object.keys(users).length}
                           </h1>
-                          <div className='mb-1'>
-                           
-                          </div>
+                          <div className="mb-1"></div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className='col-md-12 mt-4'>
-                    <div className='card'>
-                      <div className='card-body'>
-                        <div className='d-md-flex align-items-center'>
+                  <div className="col-md-12 mt-4">
+                    <div className="card">
+                      <div className="card-body">
+                        <div className="d-md-flex align-items-center">
                           <div>
-                            <h1 className='card-title'>List Of Users </h1>
+                            <h1 className="card-title">List Of Users </h1>
                           </div>
-                          <div className='ml-auto'>
-                            <h3 className='card-title'>Filter</h3>
-                            <div className='dl'>
+                          <div className="ml-auto">
+                            <h3 className="card-title">Filter</h3>
+                            <div className="dl">
                               <select
-                                className="form-select form-select-sm" aria-label=".form-select-sm example"
-                                name='user'
+                                className="form-select form-select-sm"
+                                aria-label=".form-select-sm example"
+                                name="user"
                                 onChange={(e) => onChange(e)}
                               >
-                                <option value='All Users' selected=''>
+                                <option value="All Users" selected="">
                                   All Users
                                 </option>
-                                <option value='Admin'>Admin</option>
-                                <option value='Client'>Client</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Client">Client</option>
                               </select>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className='table-responsive'>
-                        <table className='table v-middle'>
+                      <div className="table-responsive">
+                        <table className="table v-middle">
                           <thead>
-                            <tr className='bg-light'>
-                              <th className='border-top-0'>Name</th>
-                              <th className='border-top-0'>Email</th>
-                              <th className='border-top-0'>Role</th>
-                              <th className='border-top-0'>
+                            <tr className="bg-light">
+                              <th className="border-top-0">Name</th>
+                              <th className="border-top-0">Email</th>
+                              <th className="border-top-0">Role</th>
+                              <th className="border-top-0">
                                 User Created Date
                               </th>
-                              <th className='border-top-0'>Action</th>
+                              <th className="border-top-0">Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -179,9 +178,9 @@ const UserPage = ({ getUsers, user: { users, loading } }) => {
                         </table>
                       </div>
                       <br />
-                      <div>
+                      <div className="reactpaginate">
                         <ReactPaginate
-                          className='d-flex align-items-center'
+                          className="d-flex align-items-center"
                           previousLabel={"Previous"}
                           nextLabel={"Next"}
                           pageCount={pageCount}
