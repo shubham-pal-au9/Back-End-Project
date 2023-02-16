@@ -30,54 +30,54 @@ const Reset = ({ reset, isAuthenticated, user }) => {
 
   //Redirect if logged in
   if (isAuthenticated) {
-    if (user.role === "Admin") return <Redirect to='/admin-dashboard' />;
+    if (user.role === "Admin") return <Redirect to="/admin-dashboard" />;
     else {
-      return <Redirect to='/client-dashboard' />;
+      return <Redirect to="/client-dashboard" />;
     }
   }
 
   return (
     <Fragment>
-      <div className='my-login-page'>
-        <section className='h-100'>
-          <div className='container h-100 '>
-            <div className='row justify-content-md-center h-100'>
-              <div className='card-wrapper'>
-                <div className='brand'>
+      <div className="my-login-page">
+        <section className="h-100">
+          <div className="container h-100 ">
+            <div className="row justify-content-md-center h-100">
+              <div className="card-wrapper">
+                <div className="brand">
                   {/* <img
                     src='https://cdn3.iconfinder.com/data/icons/e-commerce-and-online-shopping/64/__account_male-512.png'
                     alt='logo'
                   /> */}
                 </div>
                 <Alert />
-                <div className='card fat'>
-                  <div className='card-body'>
-                    <h4 className='card-title'>
+                <div className="card fat">
+                  <div className="card-body">
+                    <h4 className="card-title">
                       Enter your email to reset your password
                     </h4>
                     <form
-                      className='my-login-validation'
+                      className="my-login-validation"
                       onSubmit={(e) => onSubmit(e)}
                     >
-                      <div className='form-group mt-4'>
-                        <label htmlFor='email' className='mb-2'>
+                      <div className="form-group mt-4">
+                        <label htmlFor="email" className="mb-2">
                           E-Mail Address
                         </label>
                         <input
-                          id='email'
-                          type='email'
-                          className='form-control'
-                          name='email'
+                          id="email"
+                          type="email"
+                          className="form-control"
+                          name="email"
                           value={email}
                           onChange={(e) => onChange(e)}
                           required
                           autoFocus
                         />
                       </div>
-                      <div className='form-group mt-4'>
+                      <div className="form-group mt-4">
                         <button
-                          type='submit'
-                          className='btn btn-primary btn-lg'
+                          type="submit"
+                          className="btn btn-primary btn-lg"
                         >
                           Submit
                         </button>

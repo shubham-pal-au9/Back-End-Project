@@ -10,6 +10,7 @@ import { getTickets } from "../../actions/ticket";
 import UserList from "../user/UserList";
 import ReactPaginate from "react-paginate";
 import Alert from "../layout/Alert";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
 
 import PropTypes from "prop-types";
 
@@ -26,6 +27,8 @@ const AdminDashboard = ({
     getTickets();
   }, [getUsers, getTickets]);
 
+  const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
+
   const numNew = Object.keys(
     tickets.filter((ticket) => ticket.status === "New")
   ).length;
@@ -33,6 +36,33 @@ const AdminDashboard = ({
   const numProgress = Object.keys(
     tickets.filter((ticket) => ticket.status === "In Progress")
   ).length;
+
+  const data = [
+    {
+      name: "In Progress Tickets",
+      uv: numProgress,
+    },
+    {
+      name: "New Tickets",
+      uv: numNew,
+    },
+  ];
+  const getPath = (x, y, width, height) => {
+    return `M${x},${y + height}C${x + width / 3},${y + height} ${
+      x + width / 2
+    },${y + height / 3}
+    ${x + width / 2}, ${y}
+    C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${
+      x + width
+    }, ${y + height}
+    Z`;
+  };
+
+  const TriangleBar = (props) => {
+    const { fill, x, y, width, height } = props;
+
+    return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+  };
 
   const [pageNumber, setPageNumber] = useState(0);
   const usersPerPage = 10;
@@ -114,6 +144,39 @@ const AdminDashboard = ({
                           <h1 className="display-5 mt-1 mb-3">{numNew}</h1>
                         </div>
                       </div>
+                    </div>
+                    <div className="graph-title-admin">
+                      Graphical Representation of In Progress and New Tickets
+                    </div>
+                    <div className="graph-chart">
+                      <BarChart
+                        width={500}
+                        height={300}
+                        data={data}
+                        margin={{
+                          top: 20,
+                          right: 30,
+                          left: 20,
+                          bottom: 5,
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Bar
+                          dataKey="uv"
+                          fill="#8884d8"
+                          shape={<TriangleBar />}
+                          label={{ position: "top" }}
+                        >
+                          {data.map((entry, index) => (
+                            <Cell
+                              key={`cell-${index}`}
+                              fill={colors[index % 20]}
+                            />
+                          ))}
+                        </Bar>
+                      </BarChart>
                     </div>
                   </div>
                   <div className="col-md-12 mt-4">
